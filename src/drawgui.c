@@ -1,13 +1,15 @@
 #include "drawgui.h"
 
 void drawInterface(SDL_Renderer *renderer, SDL_Window *screen) {
+    // Clear the renderer
     SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
     SDL_RenderClear(renderer);
 
+    // Create the menu border line
     SDL_Rect menu;
     int windowWidth, windowHeight;
 
-    SDL_GetWindowSize(screen, &windowWidth, &windowHeight);
+    SDL_GetWindowSize(screen, &windowWidth, &windowHeight); // Get the window size
 
     menu.w = 3;
     menu.h = windowHeight;
@@ -17,6 +19,7 @@ void drawInterface(SDL_Renderer *renderer, SDL_Window *screen) {
     SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
     SDL_RenderFillRect(renderer, &menu);
 
+    // Create the plus button.
     SDL_Texture *plusbuttonimg;
     SDL_Rect plusbuttonrect;
     plusbuttonimg = IMG_LoadTexture(renderer, "files/images/plusbutton.png");
