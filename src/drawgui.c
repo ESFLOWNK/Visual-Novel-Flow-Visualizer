@@ -63,6 +63,10 @@ void drawInterface() {
     SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
     SDL_RenderFillRect(renderer, &menu);
     
+    // We calculate the position of the button using percentages.
+    plusbutton->plusbuttonrect.x = getPercentage(plusbutton->PLUS_BUTTON_XPOS_PERCENTAGE, windowWidth) - plusbutton->plusbuttonrect.w / 2;
+    plusbutton->plusbuttonrect.y = getPercentage(plusbutton->PLUS_BUTTON_YPOS_PERCENTAGE, windowHeight) - plusbutton->plusbuttonrect.h / 2;
+
     SDL_RenderCopy(renderer, plusbutton->plusbuttonimg, NULL, &plusbutton->plusbuttonrect);
 }
 
@@ -72,8 +76,6 @@ void startDrawing() {
 
 void freeGuiComponents() {
     // Free the plus button
-    free((char*) plusbutton->SELECTED_IMAGE_FILE);
-    free((char*) plusbutton->UNSELECTED_IMAGE_FILE);
     SDL_DestroyTexture(plusbutton->plusbuttonimg);
     free(plusbutton);
 }
