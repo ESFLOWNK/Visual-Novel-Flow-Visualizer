@@ -1,28 +1,6 @@
 #include <stdio.h>
 #include <SDL2/SDL.h>
-#include "drawgui.h"
-
-SDL_Window *screen = NULL;
-SDL_Renderer *renderer;
-SDL_Event event;
-
-void loop(){
-    unsigned char running = 1;
-    
-    while(running) {
-        startDrawing(renderer, screen);
-
-        SDL_RenderPresent(renderer);
-
-        while(SDL_PollEvent(&event)){
-            switch(event.type) {
-                case SDL_QUIT:
-                     running = 0;
-                     break;
-            }
-        }
-    }
-}
+#include "draw_components.h"
 
 int main(){
     SDL_Init(SDL_INIT_EVERYTHING);
@@ -33,9 +11,12 @@ int main(){
     }
     SDL_SetWindowTitle(screen, "VNFV");
     SDL_SetWindowResizable(screen, SDL_TRUE);
+    SDL_SetWindowMinimumSize(screen, 600, 380);
 
-    loop();
+    drawInitialize(renderer, screen);
+    drawLoop();
 
+    freeGuiComponents();
     SDL_DestroyRenderer(renderer);
 	SDL_DestroyWindow(screen);
 	SDL_Quit();
