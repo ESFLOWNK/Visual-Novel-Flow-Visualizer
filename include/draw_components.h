@@ -63,7 +63,7 @@ Sets everything up in order to start drawing.
 
 @param . The parameters explain themselves.
 */
-void drawInitialize(SDL_Renderer *renderer, SDL_Window *screen);
+void guiDrawInitialize(SDL_Renderer *renderer, SDL_Window *screen);
 
 /*
 Draws the interface elements.
@@ -77,7 +77,7 @@ Runs all the functions needed to draw a frame.
 
 @param . The parameters explain themselves.
 */
-void startDrawing();
+void startDrawingGui();
 
 /*
 Frees all the pointers allocated.

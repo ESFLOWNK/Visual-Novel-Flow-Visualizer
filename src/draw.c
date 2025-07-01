@@ -9,7 +9,10 @@ void drawLoop(){
     unsigned char running = 1;
     
     while(running) {
-        startDrawing(renderer, screen);
+        SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
+        SDL_RenderClear(renderer);
+        
+        startDrawingGui(renderer, screen);
 
         SDL_RenderPresent(renderer);
 
