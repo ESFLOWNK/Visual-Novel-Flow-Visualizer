@@ -43,6 +43,14 @@ order to draw everything in screen, also listens to the events.
 void draw_loop();
 
 /*
+This function checks if the plus button is being pressed;
+
+Returns:
+SDL_bool It is SDL_TRUE if the button is being pressed, otherwise it's SDL_FALSE.
+*/
+SDL_bool plusButton_isClicked();
+
+/*
 Changes the plus button texture from selected to unselected and viceversa.
 @param selected Acts as a boolean data type,
 if 1 the button will have a selected texture,

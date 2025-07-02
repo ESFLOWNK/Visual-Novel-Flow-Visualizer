@@ -1,5 +1,13 @@
 #include "draw_components.h"
 
+SDL_bool plusButton_isClicked() {
+    SDL_Rect mousePosition;
+    mousePosition.w = 1;
+    mousePosition.h = 1;
+    SDL_GetMouseState(&mousePosition.x, &mousePosition.y);
+    return SDL_HasIntersection(&plusbutton->plusbuttonrect, &mousePosition);
+}
+
 void plusButton_setSelected(unsigned char selected) {
     // It's not that difficult to read, if selected equals 1, selected, if 0, unselected.
     if(selected) {

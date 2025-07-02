@@ -12,7 +12,7 @@ void draw_loop(){
         SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
         SDL_RenderClear(renderer);
         
-        startDrawingGui(renderer, screen);
+        gui_startDrawing(renderer, screen);
 
         SDL_RenderPresent(renderer);
 
@@ -23,11 +23,12 @@ void draw_loop(){
                     break;
 
                 case SDL_MOUSEBUTTONDOWN:
-                    plusButtonSetSelected(1);
+                    if(plusButton_isClicked() == SDL_TRUE)
+                        plusButton_setSelected(1);
                     break;
                 
                 case SDL_MOUSEBUTTONUP:
-                    plusButtonSetSelected(0);
+                    plusButton_setSelected(0);
                     break;
             }
         }

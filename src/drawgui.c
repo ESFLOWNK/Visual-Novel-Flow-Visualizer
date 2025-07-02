@@ -1,7 +1,7 @@
 #include "draw_components.h"
 
 void gui_initialize(SDL_Renderer *renderer, SDL_Window *screen) {
-    plusButtonInitialize();
+    plusButton_initialize();
 }
 
 void gui_drawInterface() {
@@ -28,7 +28,7 @@ void gui_drawInterface() {
 }
 
 void gui_startDrawing() {
-    drawInterface();
+    gui_drawInterface();
 }
 
 void gui_freeComponents() {

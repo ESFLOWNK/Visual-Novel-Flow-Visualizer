@@ -13,10 +13,10 @@ int main(){
     SDL_SetWindowResizable(screen, SDL_TRUE);
     SDL_SetWindowMinimumSize(screen, 600, 380);
 
-    guiDrawInitialize(renderer, screen);
-    drawLoop();
+    gui_initialize(renderer, screen);
+    draw_loop();
 
-    freeGuiComponents();
+    gui_freeComponents();
     SDL_DestroyRenderer(renderer);
 	SDL_DestroyWindow(screen);
 	SDL_Quit();
