@@ -1,10 +1,10 @@
 #include "draw_components.h"
 
-void guiDrawInitialize(SDL_Renderer *renderer, SDL_Window *screen) {
+void gui_initialize(SDL_Renderer *renderer, SDL_Window *screen) {
     plusButtonInitialize();
 }
 
-void drawInterface() {
+void gui_drawInterface() {
     // Create the menu border line
     SDL_Rect menu;
     int windowWidth, windowHeight;
@@ -27,11 +27,11 @@ void drawInterface() {
     SDL_RenderCopy(renderer, plusbutton->plusbuttonimg, NULL, &plusbutton->plusbuttonrect);
 }
 
-void startDrawingGui() {
+void gui_startDrawing() {
     drawInterface();
 }
 
-void freeGuiComponents() {
+void gui_freeComponents() {
     // Free the plus button
     SDL_DestroyTexture(plusbutton->plusbuttonimg);
     free(plusbutton);

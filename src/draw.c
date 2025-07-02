@@ -3,9 +3,9 @@
 SDL_Window *screen = NULL;
 SDL_Renderer *renderer = NULL;
 SDL_Event event;
-Plus_button *plusbutton = NULL;
+GuiButton *plusbutton = NULL;
 
-void drawLoop(){
+void draw_loop(){
     unsigned char running = 1;
     
     while(running) {

@@ -1,6 +1,6 @@
 #include "draw_components.h"
 
-void plusButtonSetSelected(unsigned char selected) {
+void plusButton_setSelected(unsigned char selected) {
     // It's not that difficult to read, if selected equals 1, selected, if 0, unselected.
     if(selected) {
         plusbutton->plusbuttonimg = IMG_LoadTexture(renderer, plusbutton->SELECTED_IMAGE_FILE);
@@ -9,9 +9,9 @@ void plusButtonSetSelected(unsigned char selected) {
     }
 }
 
-void plusButtonInitialize() {
+void plusButton_initialize() {
     // Allocates memory for the struct instance
-    plusbutton = malloc(sizeof(Plus_button));
+    plusbutton = malloc(sizeof(GuiButton));
 
     //  So, how am I adding a value to a const?
     //  I saw this in a Google Gemini code (I don't have enough money to pay a ChatGPT suscription).

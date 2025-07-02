@@ -17,7 +17,7 @@
 
 // Structs
 
-typedef struct Plus_button {
+typedef struct GuiButton {
     const int PLUS_BUTTON_XPOS_PERCENTAGE;
     const int PLUS_BUTTON_YPOS_PERCENTAGE;
 
@@ -26,13 +26,13 @@ typedef struct Plus_button {
 
     SDL_Texture *plusbuttonimg;
     SDL_Rect plusbuttonrect;
-} Plus_button;
+} GuiButton;
 
 // Global variables
 
 extern SDL_Window *screen;
 extern SDL_Renderer *renderer;
-extern Plus_button *plusbutton;
+extern GuiButton *plusbutton;
 
 // Functions
 
@@ -40,7 +40,7 @@ extern Plus_button *plusbutton;
 The drawing loop function. This function runs every function required in
 order to draw everything in screen, also listens to the events.
 */
-void drawLoop();
+void draw_loop();
 
 /*
 Changes the plus button texture from selected to unselected and viceversa.
@@ -48,7 +48,7 @@ Changes the plus button texture from selected to unselected and viceversa.
 if 1 the button will have a selected texture,
 if 0 the button will have an unselected texture.
 */
-void plusButtonSetSelected(unsigned char selected);
+void plusButton_setSelected(unsigned char selected);
 
 /* 
 Initializes a Plus_button struct.
@@ -56,32 +56,32 @@ Initializes a Plus_button struct.
 @param windowWidth The current window width.
 @param windowHeight The current window height.
 */
-void plusButtonInitialize();
+void plusButton_initialize();
 
 /*
 Sets everything up in order to start drawing.
 
 @param . The parameters explain themselves.
 */
-void guiDrawInitialize(SDL_Renderer *renderer, SDL_Window *screen);
+void gui_initialize(SDL_Renderer *renderer, SDL_Window *screen);
 
 /*
 Draws the interface elements.
 
 @param . The parameters explain themselves.
 */
-void drawInterface();
+void gui_drawInterface();
 
 /*
 Runs all the functions needed to draw a frame.
 
 @param . The parameters explain themselves.
 */
-void startDrawingGui();
+void gui_startDrawing();
 
 /*
 Frees all the pointers allocated.
 */
-void freeGuiComponents();
+void gui_freeComponents();
 
 #endif
