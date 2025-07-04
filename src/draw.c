@@ -5,21 +5,31 @@ SDL_Renderer *renderer = NULL;
 SDL_Event event;
 GuiButton *plusbutton = NULL;
 
-void draw_loop(){
-    unsigned char running = 1;
+void draw_startDrawing() {
+    SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
+    SDL_RenderClear(renderer);
     
-    while(running) {
-        SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
-        SDL_RenderClear(renderer);
-        
-        gui_startDrawing(renderer, screen);
+    gui_startDrawing();
 
-        SDL_RenderPresent(renderer);
+    SDL_RenderPresent(renderer);
+}
 
+void draw_loop(){
+    /*
+    Status:
+        0 -> Not running
+        1 -> Just running
+        2 -> Resized
+    */
+    unsigned char status = 1;
+    
+    draw_startDrawing();
+
+    while(status > 0) {
         while(SDL_PollEvent(&event)){
             switch(event.type) {
                 case SDL_QUIT:
-                    running = 0;
+                    status = 0;
                     break;
 
                 case SDL_MOUSEBUTTONDOWN:
@@ -30,7 +40,17 @@ void draw_loop(){
                 case SDL_MOUSEBUTTONUP:
                     plusButton_setSelected(0);
                     break;
+
+                case SDL_WINDOWEVENT:
+                    if(event.window.event == SDL_WINDOWEVENT_RESIZED)
+                        status = 2;
+                    break;
             }
+        }
+
+        if(status == 2) {
+            draw_startDrawing();
+            status = 1;
         }
     }
 }

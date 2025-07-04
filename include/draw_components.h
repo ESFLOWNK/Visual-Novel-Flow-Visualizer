@@ -37,6 +37,11 @@ extern GuiButton *plusbutton;
 // Functions
 
 /*
+Runs all the functions needed to draw a frame: gui functions, etc.
+*/
+void draw_startDrawing();
+
+/*
 The drawing loop function. This function runs every function required in
 order to draw everything in screen, also listens to the events.
 */
@@ -59,31 +64,25 @@ if 0 the button will have an unselected texture.
 void plusButton_setSelected(unsigned char selected);
 
 /* 
-Initializes a Plus_button struct.
-@param button The given button
-@param windowWidth The current window width.
-@param windowHeight The current window height.
+Initializes the GUI plus button, which is a GuiButton struct.
 */
 void plusButton_initialize();
 
 /*
-Sets everything up in order to start drawing.
+Sets everything up in order to start drawing the GUI.
 
-@param . The parameters explain themselves.
+@param renderer Is the renderer
+@param screen Is the window
 */
 void gui_initialize(SDL_Renderer *renderer, SDL_Window *screen);
 
 /*
 Draws the interface elements.
-
-@param . The parameters explain themselves.
 */
 void gui_drawInterface();
 
 /*
-Runs all the functions needed to draw a frame.
-
-@param . The parameters explain themselves.
+Runs all the functions needed to draw the GUI elements in a frame.
 */
 void gui_startDrawing();
 
