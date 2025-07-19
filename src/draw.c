@@ -28,22 +28,24 @@ void draw_loop(){
     while(status > 0) {
         while(SDL_PollEvent(&event)){
             switch(event.type) {
-                case SDL_QUIT:
-                    status = 0;
-                    break;
-
                 case SDL_MOUSEBUTTONDOWN:
-                    if(plusButton_isClicked() == SDL_TRUE)
-                        plusButton_setSelected(1);
+                    if(guiButton_isClicked(plusbutton) == SDL_TRUE)
+                        guiButton_setSelected(plusbutton, 1);
+                        draw_startDrawing();
                     break;
                 
                 case SDL_MOUSEBUTTONUP:
-                    plusButton_setSelected(0);
+                    guiButton_setSelected(plusbutton, 0);
+                    draw_startDrawing();
                     break;
 
                 case SDL_WINDOWEVENT:
                     if(event.window.event == SDL_WINDOWEVENT_RESIZED)
                         status = 2;
+                    break;
+
+                case SDL_QUIT:
+                    status = 0;
                     break;
             }
         }

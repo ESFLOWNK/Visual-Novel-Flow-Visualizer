@@ -1,7 +1,7 @@
 #include "draw_components.h"
 
 void gui_initialize(SDL_Renderer *renderer, SDL_Window *screen) {
-    plusButton_initialize();
+    guiButtons_initialize();
 }
 
 void gui_drawInterface() {
@@ -20,11 +20,11 @@ void gui_drawInterface() {
     SDL_RenderFillRect(renderer, &menu);
     
     // We calculate the position of the button using percentages.
-    plusbutton->plusbuttonrect.x = getPercentage(plusbutton->PLUS_BUTTON_XPOS_PERCENTAGE, windowWidth) - plusbutton->plusbuttonrect.w / 2;
-    plusbutton->plusbuttonrect.y = getPercentage(plusbutton->PLUS_BUTTON_YPOS_PERCENTAGE, windowHeight) - plusbutton->plusbuttonrect.h / 2;
+    plusbutton->buttonrect.x = getPercentage(plusbutton->BUTTON_XPOS_PERCENTAGE, windowWidth) - plusbutton->buttonrect.w / 2;
+    plusbutton->buttonrect.y = getPercentage(plusbutton->BUTTON_YPOS_PERCENTAGE, windowHeight) - plusbutton->buttonrect.h / 2;
 
     // Draw the plus button image
-    SDL_RenderCopy(renderer, plusbutton->plusbuttonimg, NULL, &plusbutton->plusbuttonrect);
+    SDL_RenderCopy(renderer, plusbutton->buttonimg, NULL, &plusbutton->buttonrect);
 }
 
 void gui_startDrawing() {
@@ -33,6 +33,6 @@ void gui_startDrawing() {
 
 void gui_freeComponents() {
     // Free the plus button
-    SDL_DestroyTexture(plusbutton->plusbuttonimg);
+    SDL_DestroyTexture(plusbutton->buttonimg);
     free(plusbutton);
 }

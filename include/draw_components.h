@@ -18,14 +18,14 @@
 // Structs
 
 typedef struct GuiButton {
-    const int PLUS_BUTTON_XPOS_PERCENTAGE;
-    const int PLUS_BUTTON_YPOS_PERCENTAGE;
+    const int BUTTON_XPOS_PERCENTAGE;
+    const int BUTTON_YPOS_PERCENTAGE;
 
     const char *UNSELECTED_IMAGE_FILE;
     const char *SELECTED_IMAGE_FILE;
 
-    SDL_Texture *plusbuttonimg;
-    SDL_Rect plusbuttonrect;
+    SDL_Texture *buttonimg;
+    SDL_Rect buttonrect;
 } GuiButton;
 
 // Global variables
@@ -53,7 +53,7 @@ This function checks if the plus button is being pressed;
 Returns:
 SDL_bool It is SDL_TRUE if the button is being pressed, otherwise it's SDL_FALSE.
 */
-SDL_bool plusButton_isClicked();
+SDL_bool guiButton_isClicked(GuiButton *button);
 
 /*
 Changes the plus button texture from selected to unselected and viceversa.
@@ -61,12 +61,12 @@ Changes the plus button texture from selected to unselected and viceversa.
 if 1 the button will have a selected texture,
 if 0 the button will have an unselected texture.
 */
-void plusButton_setSelected(unsigned char selected);
+void guiButton_setSelected(GuiButton *button, unsigned char selected);
 
 /* 
 Initializes the GUI plus button, which is a GuiButton struct.
 */
-void plusButton_initialize();
+void guiButtons_initialize();
 
 /*
 Sets everything up in order to start drawing the GUI.
