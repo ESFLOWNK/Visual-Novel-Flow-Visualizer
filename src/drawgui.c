@@ -1,5 +1,17 @@
 #include "draw_components.h"
 
+void setButtonPositionByPercentage(GuiButton *button, int windowWidth, int windowHeight){
+    /* 
+    Local function that sets a GuiButton x and y position by
+    its own position percentages.
+
+    This function uses pointers to modify the values.
+    */
+
+    button->buttonrect.x = getPercentage(button->BUTTON_XPOS_PERCENTAGE, windowWidth) - button->buttonrect.w / 2;
+    button->buttonrect.y = getPercentage(button->BUTTON_YPOS_PERCENTAGE, windowHeight) - button->buttonrect.h / 2;
+}
+
 void gui_initialize(SDL_Renderer *renderer, SDL_Window *screen) {
     guiButtons_initialize();
 }
@@ -19,12 +31,13 @@ void gui_drawInterface() {
     SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
     SDL_RenderFillRect(renderer, &menu);
     
-    // We calculate the position of the button using percentages.
-    plusbutton->buttonrect.x = getPercentage(plusbutton->BUTTON_XPOS_PERCENTAGE, windowWidth) - plusbutton->buttonrect.w / 2;
-    plusbutton->buttonrect.y = getPercentage(plusbutton->BUTTON_YPOS_PERCENTAGE, windowHeight) - plusbutton->buttonrect.h / 2;
+    // We calculate the position of the buttons using percentages.
+    setButtonPositionByPercentage(plusbutton, windowWidth, windowHeight);
+    setButtonPositionByPercentage(minusbutton, windowWidth, windowHeight);
 
-    // Draw the plus button image
+    // Draw the buttons images
     SDL_RenderCopy(renderer, plusbutton->buttonimg, NULL, &plusbutton->buttonrect);
+    SDL_RenderCopy(renderer, minusbutton->buttonimg, NULL, &minusbutton->buttonrect);
 }
 
 void gui_startDrawing() {
@@ -32,7 +45,8 @@ void gui_startDrawing() {
 }
 
 void gui_freeComponents() {
-    // Free the plus button
-    SDL_DestroyTexture(plusbutton->buttonimg);
+    SDL_DestroyTexture(plusbutton->buttonimg);  // Free the plus button
     free(plusbutton);
+    SDL_DestroyTexture(minusbutton->buttonimg); // Free the minus button
+    free(minusbutton);
 }

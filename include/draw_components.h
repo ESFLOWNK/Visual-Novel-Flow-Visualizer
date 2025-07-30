@@ -33,6 +33,7 @@ typedef struct GuiButton {
 extern SDL_Window *screen;
 extern SDL_Renderer *renderer;
 extern GuiButton *plusbutton;
+extern GuiButton *minusbutton;
 
 // Functions
 

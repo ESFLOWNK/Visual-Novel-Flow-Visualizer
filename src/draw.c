@@ -4,6 +4,7 @@ SDL_Window *screen = NULL;
 SDL_Renderer *renderer = NULL;
 SDL_Event event;
 GuiButton *plusbutton = NULL;
+GuiButton *minusbutton = NULL;
 
 void draw_startDrawing() {
     SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
@@ -31,11 +32,14 @@ void draw_loop(){
                 case SDL_MOUSEBUTTONDOWN:
                     if(guiButton_isClicked(plusbutton) == SDL_TRUE)
                         guiButton_setSelected(plusbutton, 1);
-                        draw_startDrawing();
+                    if(guiButton_isClicked(minusbutton) == SDL_TRUE)
+                        guiButton_setSelected(minusbutton, 1);
+                    draw_startDrawing();
                     break;
                 
                 case SDL_MOUSEBUTTONUP:
-                    guiButton_setSelected(plusbutton, 0);
+                    guiButton_setSelected(plusbutton, 0);   // TODO: this could be better...
+                    guiButton_setSelected(minusbutton, 0);
                     draw_startDrawing();
                     break;
 

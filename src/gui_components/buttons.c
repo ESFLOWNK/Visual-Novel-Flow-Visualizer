@@ -18,6 +18,8 @@ void guiButton_setSelected(GuiButton *button, unsigned char selected) {
 }
 
 void guiButtons_initialize() {
+    // Plus button initialization
+
     // Allocates memory for the struct instance
     plusbutton = malloc(sizeof(GuiButton));
 
@@ -46,4 +48,22 @@ void guiButtons_initialize() {
     // We calculate the position of the button using percentages.
     plusbutton->buttonrect.x = getPercentage(plusbutton->BUTTON_XPOS_PERCENTAGE, windowWidth) - plusbutton->buttonrect.w / 2;
     plusbutton->buttonrect.y = getPercentage(plusbutton->BUTTON_YPOS_PERCENTAGE, windowHeight) - plusbutton->buttonrect.h / 2;
+
+
+    // Minus button initialization
+    minusbutton = malloc(sizeof(GuiButton));
+
+    *(int *) &minusbutton->BUTTON_XPOS_PERCENTAGE = 10;
+    *(int *) &minusbutton->BUTTON_YPOS_PERCENTAGE = 95;
+
+    *(char **) &minusbutton->UNSELECTED_IMAGE_FILE = "files/images/minusbutton.png";
+    *(char **) &minusbutton->SELECTED_IMAGE_FILE = "files/images/minusbutton_selected.png";
+
+    minusbutton->buttonimg = IMG_LoadTexture(renderer, minusbutton->UNSELECTED_IMAGE_FILE);
+
+    minusbutton->buttonrect.w = 30;
+    minusbutton->buttonrect.h = 30;
+
+    minusbutton->buttonrect.x = getPercentage(minusbutton->BUTTON_XPOS_PERCENTAGE, windowWidth) - minusbutton->buttonrect.w / 2;
+    minusbutton->buttonrect.y = getPercentage(minusbutton->BUTTON_YPOS_PERCENTAGE, windowHeight) - minusbutton->buttonrect.h / 2;
 }
