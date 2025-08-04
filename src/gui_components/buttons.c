@@ -1,5 +1,8 @@
 #include "draw_components.h"
 
+GuiButton *plusbutton = NULL;
+GuiButton *minusbutton = NULL;
+
 SDL_bool guiButton_isClicked(GuiButton *button) {
     SDL_Rect mousePosition;
     mousePosition.w = 1;

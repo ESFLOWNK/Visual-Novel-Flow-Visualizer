@@ -1,5 +1,7 @@
 #include "draw_components.h"
 
+
+
 void setButtonPositionByPercentage(GuiButton *button, int windowWidth, int windowHeight){
     /* 
     Local function that sets a GuiButton x and y position by

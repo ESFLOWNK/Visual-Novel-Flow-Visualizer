@@ -3,8 +3,6 @@
 SDL_Window *screen = NULL;
 SDL_Renderer *renderer = NULL;
 SDL_Event event;
-GuiButton *plusbutton = NULL;
-GuiButton *minusbutton = NULL;
 
 void draw_startDrawing() {
     SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
