@@ -28,6 +28,11 @@ typedef struct GuiButton {
     SDL_Rect buttonrect;
 } GuiButton;
 
+typedef struct GuiButtonNode {
+    GuiButton *button;
+    GuiButton *next;
+} GuiButtonNode;
+
 // Global variables
 
 extern SDL_Window *screen;

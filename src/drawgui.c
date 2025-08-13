@@ -1,6 +1,10 @@
 #include "draw_components.h"
 
-
+typedef struct GuiCollisionCell {
+    unsigned char guiElementType;
+    GuiButtonNode *button; // guiElementType 0
+//  others                 // guiElementType ...
+} GuiCollisionCell;
 
 void setButtonPositionByPercentage(GuiButton *button, int windowWidth, int windowHeight){
     /* 
