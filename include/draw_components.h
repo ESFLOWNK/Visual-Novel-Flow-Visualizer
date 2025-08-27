@@ -28,11 +28,6 @@ typedef struct GuiButton {
     SDL_Rect buttonrect;
 } GuiButton;
 
-typedef struct GuiButtonNode {
-    GuiButton *button;
-    GuiButton *next;
-} GuiButtonNode;
-
 // Global variables
 
 extern SDL_Window *screen;
@@ -73,6 +68,20 @@ void guiButton_setSelected(GuiButton *button, unsigned char selected);
 Initializes the GUI plus button, which is a GuiButton struct.
 */
 void guiButtons_initialize();
+
+/* 
+In order to make the clicking detection work, all the clickable buttons
+must be added to the collision grid with this method.
+
+@param button The button to be added to the collision grid.
+*/
+void gui_addButtonToGuiCollisionCell(GuiButton *button);
+
+/*
+When some button or part of the window is clicked this function
+should be called in order to run the convenient functions.
+*/
+void gui_handleClick();
 
 /*
 Sets everything up in order to start drawing the GUI.

@@ -47,11 +47,12 @@ void guiButtons_initialize() {
     // We set the button width and height.
     plusbutton->buttonrect.w = 30;
     plusbutton->buttonrect.h = 30;
-
+        
     // We calculate the position of the button using percentages.
-    plusbutton->buttonrect.x = getPercentage(plusbutton->BUTTON_XPOS_PERCENTAGE, windowWidth) - plusbutton->buttonrect.w / 2;
-    plusbutton->buttonrect.y = getPercentage(plusbutton->BUTTON_YPOS_PERCENTAGE, windowHeight) - plusbutton->buttonrect.h / 2;
-
+    plusbutton->buttonrect.x = getPercentageFrom(plusbutton->BUTTON_XPOS_PERCENTAGE, windowWidth) - plusbutton->buttonrect.w / 2;
+    plusbutton->buttonrect.y = getPercentageFrom(plusbutton->BUTTON_YPOS_PERCENTAGE, windowHeight) - plusbutton->buttonrect.h / 2;
+        
+    gui_addButtonToGuiCollisionCell(plusbutton); // Add clicking detection to the button
 
     // Minus button initialization
     minusbutton = malloc(sizeof(GuiButton));
@@ -67,6 +68,8 @@ void guiButtons_initialize() {
     minusbutton->buttonrect.w = 30;
     minusbutton->buttonrect.h = 30;
 
-    minusbutton->buttonrect.x = getPercentage(minusbutton->BUTTON_XPOS_PERCENTAGE, windowWidth) - minusbutton->buttonrect.w / 2;
-    minusbutton->buttonrect.y = getPercentage(minusbutton->BUTTON_YPOS_PERCENTAGE, windowHeight) - minusbutton->buttonrect.h / 2;
+    minusbutton->buttonrect.x = getPercentageFrom(minusbutton->BUTTON_XPOS_PERCENTAGE, windowWidth) - minusbutton->buttonrect.w / 2;
+    minusbutton->buttonrect.y = getPercentageFrom(minusbutton->BUTTON_YPOS_PERCENTAGE, windowHeight) - minusbutton->buttonrect.h / 2;
+
+    gui_addButtonToGuiCollisionCell(minusbutton); // Add clicking detection to the button
 }

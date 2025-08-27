@@ -1,7 +1,16 @@
 #ifndef UTILS_H
 #define UTILS_H
 
-int getPercentage(int percentage, int of);
+/* 
+Performs a calculation to get a percentage (`percentage`) of `of`. 
+*/
+int getPercentageFrom(int percentage, int of);
+
+/* 
+Performs a calculation which returns what percentage is `percentage` 
+compared to `of`.
+*/
+int getPercentageOf(int percentage, int of);
 
 /* 
 Checks if point `a` is inside the area of `b`

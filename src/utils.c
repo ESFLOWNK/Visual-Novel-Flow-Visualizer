@@ -1,7 +1,11 @@
 #include "utils.h"
 
-int getPercentage(int percentage, int of) {
+int getPercentageFrom(int percentage, int of) {
     return ((float) of / 100) * percentage;
+}
+
+int getPercentageOf(int percentage, int of){
+    return ((float) 100 / of) * percentage;
 }
 
 unsigned char isInside(int ax, int ay, int bx, int by, int bw, int bh) {

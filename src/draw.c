@@ -28,10 +28,7 @@ void draw_loop(){
         while(SDL_PollEvent(&event)){
             switch(event.type) {
                 case SDL_MOUSEBUTTONDOWN:
-                    if(guiButton_isClicked(plusbutton) == SDL_TRUE)
-                        guiButton_setSelected(plusbutton, 1);
-                    if(guiButton_isClicked(minusbutton) == SDL_TRUE)
-                        guiButton_setSelected(minusbutton, 1);
+                    gui_handleClick();
                     draw_startDrawing();
                     break;
                 
