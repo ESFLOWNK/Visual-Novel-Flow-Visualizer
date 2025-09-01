@@ -49,8 +49,6 @@ void gui_handleClick() {
 
     int cellxPos = getPercentageOf(mousePosition.x, windowWidth) / 9;
     int cellyPos = getPercentageOf(mousePosition.y, windowHeight) / 9;
-    
-    printf("%d %d\n", cellxPos, cellyPos);
 
     GuiCollisionCell *guiCellP;
     guiCellP = guiGrid[cellxPos][cellyPos];
