@@ -8,7 +8,14 @@ typedef struct GuiCollisionCell {
     struct GuiCollisionCell *next;
 } GuiCollisionCell;
 
+typedef struct FocusedGuiElement {
+    unsigned char guiElementType;
+    GuiButton *button;
+//  others
+} FocusedGuiElement;
+
 GuiCollisionCell* guiGrid[12][12];
+FocusedGuiElement focusedGuiElement;
 
 void setButtonPositionByPercentage(GuiButton *button, int windowWidth, int windowHeight){
     /* 
@@ -39,7 +46,7 @@ void gui_addButtonToGuiCollisionCell(GuiButton *button) {
         = buttonCell;
 }
 
-void gui_handleClick() {
+void gui_handleClickDown() {
     SDL_Rect mousePosition;
     mousePosition.w = 1;
     mousePosition.h = 1;
@@ -55,10 +62,22 @@ void gui_handleClick() {
 
     while(guiCellP->guiElementType != 0) {
         if(guiCellP->guiElementType == 1) {
-            if(guiButton_isClicked(guiCellP->button) == SDL_TRUE) guiButton_setSelected(guiCellP->button,1);
+            if(guiButton_isClicked(guiCellP->button) == SDL_TRUE) {
+                guiButton_setSelected(guiCellP->button,1);
+                focusedGuiElement.guiElementType = 1;
+                focusedGuiElement.button = guiCellP->button;
+            }
         }
 
         guiCellP = guiCellP->next;
+    }
+}
+
+void gui_handleClickUp() {
+    if(focusedGuiElement.guiElementType == 1) {
+        guiButton_setSelected(focusedGuiElement.button,0);
+        focusedGuiElement.guiElementType = 0;
+        focusedGuiElement.button = NULL;
     }
 }
 
@@ -71,6 +90,8 @@ void gui_initialize(SDL_Renderer *renderer, SDL_Window *screen) {
             guiGrid[i][j]->next = NULL;
         }
     }
+
+    focusedGuiElement.guiElementType = 0;
 
     guiButtons_initialize();
 }

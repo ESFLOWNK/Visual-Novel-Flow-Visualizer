@@ -81,7 +81,13 @@ void gui_addButtonToGuiCollisionCell(GuiButton *button);
 When some button or part of the window is clicked this function
 should be called in order to run the convenient functions.
 */
-void gui_handleClick();
+void gui_handleClickDown();
+
+/* 
+When a `MOUSE UP` event ocurs, this function should be called,
+it deselects the currently pressed gui element.
+*/
+void gui_handleClickUp();
 
 /*
 Sets everything up in order to start drawing the GUI.

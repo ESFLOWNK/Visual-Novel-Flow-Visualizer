@@ -28,13 +28,12 @@ void draw_loop(){
         while(SDL_PollEvent(&event)){
             switch(event.type) {
                 case SDL_MOUSEBUTTONDOWN:
-                    gui_handleClick();
+                    gui_handleClickDown();
                     draw_startDrawing();
                     break;
                 
                 case SDL_MOUSEBUTTONUP:
-                    guiButton_setSelected(plusbutton, 0);   // TODO: this could be better...
-                    guiButton_setSelected(minusbutton, 0);
+                    gui_handleClickUp();
                     draw_startDrawing();
                     break;
 
